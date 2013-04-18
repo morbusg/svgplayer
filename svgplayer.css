@@ -1,0 +1,11 @@
+#player       { width: 200px; height: 200px }
+#progress     { fill: none; stroke: gold; stroke-width: 1.5 }
+#background   { fill: #ddd; stroke: url(#bg-stroke-grad) }
+#play, #pause { fill: #888 }
+#pause        { display: none }
+.part         { opacity: 0; stroke: black; stroke-linecap: butt }
+stop          { stop-color: #888 }
+stop ~ stop   { stop-color: #888 }
+path, g       { cursor: pointer }
+#background, .part { stroke-width: 2 }
+* { -webkit-touch-callout: none; -webkit-user-select: none }

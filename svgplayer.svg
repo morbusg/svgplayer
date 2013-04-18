@@ -1,0 +1,43 @@
+<?xml version="1.0" standalone="no"?>
+<?xml-stylesheet type="text/css" href="svgplayer.css"?>
+<svg xmlns="http://www.w3.org/2000/svg"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml"
+  onload="init()" version="1.1" id="player" viewBox="-6.5 -6 22 22">
+
+  <defs>
+    <script type="application/ecmascript" xlink:href="svgplayer.js" />
+
+    <xhtml:meta name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1" />
+  
+    <radialGradient id="bg-stroke-grad">
+      <stop offset=".9" />
+      <stop offset="1" />
+    </radialGradient>
+  </defs>
+
+  <foreignObject requiredExtensions="http://www.w3.org/1999/xhtml">
+    <audio xmlns="http://www.w3.org/1999/xhtml" id="audio">
+      <source src="http://freedownloads.last.fm/download/39039786/Kiitosp%25C3%25A4iv%25C3%25A4n%2Bilta.mp3" type="audio/mpeg" />
+    </audio>
+  </foreignObject>
+
+  <circle id="background" r="10" cx="4.5" cy="5" />
+
+  <circle id="progress" r="10" cx="4.5" cy="5" transform="rotate(-90,4.5,5)"
+    stroke-dasharray="0% 285%">
+    <animate id="progress-animation" attributeName="stroke-dasharray"
+      dur="595.77" begin="0s" values="0% 285%;285% 0%" />
+  </circle>
+
+  <path id="play" d="M1,0 v10 l10,-5 z" />
+
+  <g id="pause">
+    <rect width="4" height="10" /> <rect width="4" height="10" x="5" />
+  </g>
+
+  <path class="part" transform="translate(4.5,5)"
+    d="M0,-10 L0.87156,-9.96195" />
+
+</svg>
