@@ -3,7 +3,7 @@
   <defs>
     <style type="text/css"><![CDATA[
       #player       { width: 200px; height: 200px }
-      #progress     { fill: none; stroke: white; stroke-width: 1.5 }
+      #progress     { fill: none; stroke: white; stroke-width: 1 }
       #background   { fill: none; stroke: black }
       #pause        { display: none }
       .part         { opacity: 0; stroke: black; stroke-linecap: butt }
@@ -32,8 +32,9 @@
         function getRotation(el) {
           return el.getAttribute('transform').split(/\D/).filter(Number)[3] }
       
+        var part = $('player').getElementsByClassName('part')[0];
         while (r < 360) {
-          var use = $('player').getElementsByClassName('part')[0].cloneNode();
+          var use = part.cloneNode();
           use.setAttribute('transform', 'translate(4.5,5) rotate(' + r + ')');
           $('player').appendChild(use);
           use.addEventListener('click', function() {jumpTo(getRotation(this))});
