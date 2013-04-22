@@ -3,9 +3,8 @@
   <defs>
     <style type="text/css"><![CDATA[
       #player       { width: 200px; height: 200px }
-      #progress     { fill: none; stroke: gold; stroke-width: 1.5 }
-      #background   { fill: #ddd; stroke: #888 }
-      #play, #pause { fill: #888 }
+      #progress     { fill: none; stroke: white; stroke-width: 1.5 }
+      #background   { fill: none; stroke: black }
       #pause        { display: none }
       .part         { opacity: 0; stroke: black; stroke-linecap: butt }
       path, g       { cursor: pointer }
@@ -17,19 +16,17 @@
       function $(id) { return document.getElementById(id) }
       function hide(el) { el.style.display='none' }
       function show(el) { el.style.display='block' }
-      
-      function params() {
-        return document.location.href.split('/').pop().split('?').pop().split(/&/) }
-      
+
       function param(p) {
-        return params().filter(function(el) {
-          return el.split("=").shift() == p }).shift().split("=").pop() }
-      
+        var q = document.location.search.substring(1).split('&')
+          .filter(function(el) { return el.split('=').shift() == p }).shift();
+        return q ? q.split('=').pop() : "undefined" }
+
       function init() {
         var r = 5;
       
-        $('audio').setAttribute("src", unescape(param("audio-file")));
-        $('audio').setAttribute("type", unescape(param("audio-type")));
+        $('audio').setAttribute("src", param("audio-file"));
+        $('audio').setAttribute("type", param("audio-type"));
         $('player').pauseAnimations();
       
         function getRotation(el) {
@@ -69,7 +66,6 @@
         $('player').setCurrentTime($('audio').currentTime) }
       
       function play() {
-        setAnimDuration();
         $('audio').play();
         $('player').unpauseAnimations();
         hide($('play'));
